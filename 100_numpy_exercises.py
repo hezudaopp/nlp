@@ -79,6 +79,78 @@ def create_a_8x8_matrix_and_fill_with_a_checkerboard_pattern():
 def indices_of_the_100th_element_of_a_6x7x8_matrix():
     return np.unravel_index(99, (6, 7, 8))
 
+def create_8x8_checkerboard_matrix_using_tile():
+    a = np.tile([[0,1],[1,0]], (4, 4))
+    return a
+    
+def normalize_a_5x5_matrix():
+    a = np.random.rand(5, 5)
+    return a / a.sum(axis=1, keepdims=True)
+
+def type_of_rgba_array():
+    return np.dtype([('r', np.ubyte), ('g', np.ubyte), ('b', np.ubyte), ('a', np.ubyte)])
+
+def multiply_a_5x3_matrix_by_a_3x2_matrix():
+    a = np.random.rand(5, 3)
+    b = np.random.rand(3, 2)
+    return a @ b
+
+def negate_a_vector_by_element(a, startIndex, endIndex):
+    a[startIndex:endIndex] = -a[startIndex:endIndex]
+    return a
+
+def sum_of_all_elements_of_an_array():
+    a = np.arange(5)
+    return np.sum(a, -1)
+
+
+def round_away_from_zero(a):
+    return np.round(a, -1)
+
+def find_common_values_between_two_arrays(a, b):
+    return np.intersect1d(a, b)
+
+def ignore_all_non_numpy_warnings():
+    with warnings.catch_warnings():
+        warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
+        np.sum([1, 2, 3, 4, 5])
+
+def sqrt_negative_numbers():
+    a = np.emath.sqrt([-1, -4, -9])
+    print(a)
+
+def date_of_today():
+    return np.datetime64('today')
+
+def date_of_yesterday():
+    today = date_of_today()
+    return today - np.timedelta64(1, 'D')
+
+def date_of_tomorrow():
+    today = date_of_today()
+    return today + np.timedelta64(1, 'D')
+
+def get_all_days_of_a_month(year, month):
+    return np.arange(np.datetime64(f'{year}-{month:02d}-01'), np.datetime64(f'{year}-{month+1:02d}-01'), np.timedelta64(1, 'D'))
+
+def compute_array_in_place(a, b):
+    return (a + b) * (-a / 2)
+
+def extract_integer_part_of_random_array():
+    a = np.random.rand(10) * 100
+    # return a.astype(int)
+    return np.floor(a)
+
+def create_5x5_matrix_with_row_values_ranging_from_0_to_4():
+    return np.tile(np.arange(5), (5, 1))
+
+def create_a_vector_of_size_10_with_values_ranging_from_0_to_1():
+    return np.linspace(25/300, 275/300, 10)
+
+def create_a_random_vector_of_size_10_and_sort_it_in_ascending_order():
+    a = np.random.rand(10)
+    return np.sort(a)
+
 if __name__ == "__main__":
     # print_numpy_info()
     # v = create_null_vector_of_size_10()
@@ -110,4 +182,21 @@ if __name__ == "__main__":
     # result_of_nan_expression()
     # print(create_5x5_matrix_with_values_1234_below_the_diagonal())
     # print(create_a_8x8_matrix_and_fill_with_a_checkerboard_pattern())
-    print(indices_of_the_100th_element_of_a_6x7x8_matrix())
+    # print(indices_of_the_100th_element_of_a_6x7x8_matrix())
+    # print(create_8x8_checkerboard_matrix_using_tile())
+    # print(normalize_a_5x5_matrix())
+    # print(type_of_rgba_array())
+    # print(multiply_a_5x3_matrix_by_a_3x2_matrix())
+    # print(negate_a_vector_by_element(np.array([1,2,3,4,5]), 1, 4))
+    # print(sum_of_all_elements_of_an_array())
+    # print(round_away_from_zero(np.array([1.5, 2.5, 3.5, 4.5, 5.5])))
+    # print(find_common_values_between_two_arrays(np.array([1,2,3,4,5]), np.array([5,6,7,8,9])))
+    # print(date_of_today())
+    # print(date_of_yesterday())
+    # print(date_of_tomorrow())
+    # print(get_all_days_of_a_month(2016, 7))
+    # print(compute_array_in_place(np.array([1,2,3,4,5]), np.array([5,6,7,8,9])))
+    # print(extract_integer_part_of_random_array())
+    # print(create_5x5_matrix_with_row_values_ranging_from_0_to_4())
+    # print(create_a_vector_of_size_10_with_values_ranging_from_0_to_1())
+    print(create_a_random_vector_of_size_10_and_sort_it_in_ascending_order())
